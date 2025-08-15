@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_amazon_app/constants/global_var.dart';
+import 'package:my_amazon_app/common/widgets/custum_textfields.dart';
 
 enum Auth { signin, signup }
 
@@ -20,6 +21,14 @@ class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: GlobalVar.greyBackgroundColor,
@@ -38,6 +47,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 leading: Radio(
+                  activeColor: GlobalVar.secondaryColor,
                   value: Auth.signup,
                   groupValue: _auth,
                   onChanged: (Auth? val) {
@@ -48,10 +58,26 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
               if (_auth == Auth.signup)
-                Form(
-                  key: _signUpFormKey,
-                  child: Column(
-                    children: [TextFormField(controller: _emailController)],
+                Container(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Form(
+                    key: _signUpFormKey,
+                    child: Column(
+                      children: [
+                        CustumTextfield(
+                          controller: _emailController,
+                          hintText: "Email",
+                        ),
+                        CustumTextfield(
+                          controller: _passwordController,
+                          hintText: "Password",
+                        ),
+                        CustumTextfield(
+                          controller: _nameController,
+                          hintText: "Name",
+                        ),
+                      ],
+                    ),
                   ),
                 ),
 
@@ -61,6 +87,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 leading: Radio(
+                  activeColor: GlobalVar.secondaryColor,
                   value: Auth.signin,
                   groupValue: _auth,
                   onChanged: (Auth? val) {

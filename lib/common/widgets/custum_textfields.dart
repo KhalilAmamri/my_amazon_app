@@ -2,16 +2,27 @@ import 'package:flutter/material.dart';
 
 class CustumTextfield extends StatelessWidget {
   final TextEditingController controller;
-  const CustumTextfield({super.key, required this.controller});
+  final String hintText;
+  const CustumTextfield({
+    super.key,
+    required this.controller,
+    required this.hintText,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: hintText,
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black),
+          ),
+        ),
+        validator: (val) {},
       ),
-      validator: (val) {},
     );
   }
 }
