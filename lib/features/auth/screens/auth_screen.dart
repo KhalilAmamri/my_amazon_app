@@ -13,6 +13,12 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   Auth _auth = Auth.signup;
+  final _signInFormKey = GlobalKey<FormState>();
+  final _signUpFormKey = GlobalKey<FormState>();
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +47,14 @@ class _AuthScreenState extends State<AuthScreen> {
                   },
                 ),
               ),
+              if (_auth == Auth.signup)
+                Form(
+                  key: _signUpFormKey,
+                  child: Column(
+                    children: [TextFormField(controller: _emailController)],
+                  ),
+                ),
+
               ListTile(
                 title: Text(
                   "Sign In",
