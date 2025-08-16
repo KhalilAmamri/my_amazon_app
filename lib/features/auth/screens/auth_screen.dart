@@ -43,6 +43,9 @@ class _AuthScreenState extends State<AuthScreen> {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               ListTile(
+                tileColor: _auth == Auth.signup
+                    ? GlobalVar.secondaryColor.withOpacity(0.2)
+                    : Colors.transparent,
                 title: Text(
                   "Create Account",
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -60,11 +63,16 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               if (_auth == Auth.signup)
                 Container(
+                  color: GlobalVar.backgroundColor,
                   padding: const EdgeInsets.all(8.0),
                   child: Form(
                     key: _signUpFormKey,
                     child: Column(
                       children: [
+                        CustumTextfield(
+                          controller: _nameController,
+                          hintText: "Name",
+                        ),
                         CustumTextfield(
                           controller: _emailController,
                           hintText: "Email",
@@ -73,10 +81,6 @@ class _AuthScreenState extends State<AuthScreen> {
                           controller: _passwordController,
                           hintText: "Password",
                         ),
-                        CustumTextfield(
-                          controller: _nameController,
-                          hintText: "Name",
-                        ),
                         MyCustumButton(text: "Sign Up", Onclick: () {}),
                       ],
                     ),
@@ -84,6 +88,9 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
 
               ListTile(
+                tileColor: _auth == Auth.signin
+                    ? GlobalVar.secondaryColor.withOpacity(0.2)
+                    : Colors.transparent,
                 title: Text(
                   "Sign In",
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -99,6 +106,27 @@ class _AuthScreenState extends State<AuthScreen> {
                   },
                 ),
               ),
+              if (_auth == Auth.signin)
+                Container(
+                  color: GlobalVar.backgroundColor,
+                  padding: const EdgeInsets.all(8.0),
+                  child: Form(
+                    key: _signUpFormKey,
+                    child: Column(
+                      children: [
+                        CustumTextfield(
+                          controller: _emailController,
+                          hintText: "Email",
+                        ),
+                        CustumTextfield(
+                          controller: _passwordController,
+                          hintText: "Password",
+                        ),
+                        MyCustumButton(text: "Sign In", Onclick: () {}),
+                      ],
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
