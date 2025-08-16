@@ -23,6 +23,12 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
         iconTheme: const IconThemeData(color: Colors.black),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: GlobalVar.secondaryColor,
+            foregroundColor: Colors.white,
+          ),
+        ),
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
       home: AuthScreen(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_amazon_app/common/widgets/custom_buttons.dart';
 import 'package:my_amazon_app/constants/global_var.dart';
-import 'package:my_amazon_app/common/widgets/custum_textfields.dart';
+import 'package:my_amazon_app/common/widgets/custom_textfields.dart';
 
 enum Auth { signin, signup }
 
@@ -76,6 +77,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           controller: _nameController,
                           hintText: "Name",
                         ),
+                        MyCustumButton(text: "Sign Up", Onclick: () {}),
                       ],
                     ),
                   ),
