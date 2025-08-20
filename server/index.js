@@ -5,8 +5,9 @@ const app = express();
 const authRouter = require('./routes/auth');
 
 const mongoose = require('mongoose');
-const DB = "mongodb+srv://khalilamamri00:uEV4PBOI7hKEXD4e@cluster0.jthzrjh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const DB = "mongodb+srv://khalilamamri00:TzNdUEcDm3qqZHYU@cluster0.jthzrjh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
+app.use(express.json());
 app.use(authRouter);
 
 mongoose.connect(DB).then(() => {
