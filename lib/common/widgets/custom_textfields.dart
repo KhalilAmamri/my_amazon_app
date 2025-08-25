@@ -21,7 +21,12 @@ class CustumTextfield extends StatelessWidget {
             borderSide: BorderSide(color: Colors.black),
           ),
         ),
-        validator: (val) {},
+        validator: (val) {
+          if (val == null || val.isEmpty) {
+            return "Please enter $hintText";
+          }
+          return null;
+        },
       ),
     );
   }

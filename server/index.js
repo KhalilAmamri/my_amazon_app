@@ -4,11 +4,13 @@ const PORT = 3000;
 const app = express();
 const authRouter = require('./routes/auth');
 
+// Add this line before your routes
+app.use(express.json());
+
+app.use(authRouter);
+
 const mongoose = require('mongoose');
 const DB = "mongodb+srv://khalilamamri00:TzNdUEcDm3qqZHYU@cluster0.jthzrjh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-app.use(express.json());
-app.use(authRouter);
 
 mongoose.connect(DB).then(() => {
   console.log('Connected to MongoDB');  

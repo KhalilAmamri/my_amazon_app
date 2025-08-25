@@ -6,6 +6,7 @@ const bcryptjs = require('bcryptjs');
 const authRouter = express.Router();
 
 authRouter.post("/api/signup", async(req, res) => {
+    console.log(req.body); // Add this line
     try {
         const { name, email, password } = req.body;
         const existingUser = await User.findOne({email});
